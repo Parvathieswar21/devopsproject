@@ -1,12 +1,23 @@
 pipeline {
 agent any
 
+tools {
+    jdk 'JDK17'
+}
+
 stages {
 
     stage('Checkout') {
         steps {
             git branch: 'main',
             url: 'https://github.com/Parvathieswar21/devopsproject.git'
+        }
+    }
+
+    stage('Check Java') {
+        steps {
+            bat 'java -version'
+            bat 'javac -version'
         }
     }
 
